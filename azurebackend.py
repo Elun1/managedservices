@@ -88,11 +88,10 @@ def get_auth_token(username, passwd):
 
 def test_instance_resptimes(hostname, instance_info, timeout=30):
 
-    resp_times = {}
     for name, arraffinity_value in instance_info.items():
         cookie = {'ARRAffinity':arraffinity_value}
-        time = requests.get('http://' + hostname, cookies=cookie, timeout=timeout).elapsed.total_seconds()
-        print('\tinstance ' + name + ' responded in ' + str(time) + ' seconds')
-        resp_times[name] = str(time)
-    
-    return resp_times
+        r = requests.get('http://' + hostname, cookies=cookie, timeout=timeout)
+        time = r.elapsed.total_seconds()
+        print('\tinstance ' + name + 
+              ' responded in ' + str(time) + 
+              ' seconds with status code ' + str(r.status_code))

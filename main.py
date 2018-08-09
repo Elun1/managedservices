@@ -28,7 +28,7 @@ def main():
         print('\t' + hostname)
 
     print('\nTesting all instances on custom URL ' + prod_app.custom_hostnames[0])
-    resp_times = test_instance_resptimes(prod_app.custom_hostnames[0], prod_app.instances)
+    test_instance_resptimes(prod_app.custom_hostnames[0], prod_app.instances)
 
 def get_input(prompt):
 
